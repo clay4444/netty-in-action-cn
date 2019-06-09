@@ -16,6 +16,8 @@ import io.netty.util.CharsetUtil;
 //标记该类的实例可以被多个 Channel 共享
 public class EchoClientHandler
     extends SimpleChannelInboundHandler<ByteBuf> {
+
+    //链接被建立时回调
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         //当被通知 Channel是活跃的时候，发送一条消息
@@ -23,6 +25,11 @@ public class EchoClientHandler
                 CharsetUtil.UTF_8));
     }
 
+    //从服务区接收一条消息时被调用；
+    /**
+     * 当这个方法完成时，我们已经获取到了传入消息，并且已经处理完它了。当该方法返回时，
+     * SimpleChannelInboundHandler 负责释放指向保存该消息的 ByteBuf 的内存引用。
+     */
     @Override
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf in) {
         //记录已接收消息的转储

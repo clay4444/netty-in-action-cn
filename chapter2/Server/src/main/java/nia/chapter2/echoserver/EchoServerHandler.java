@@ -16,6 +16,12 @@ import io.netty.util.CharsetUtil;
 //标示一个ChannelHandler可以被多个 Channel 安全地共享
 @Sharable
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {
+
+    /**
+     *，在这个方法中，我们需要将传入消息回送给发送者，而 write() 操作是异步的，直到 channelRead()
+     * 方法返回后可能仍然没有完成。为此，EchoServerHandler扩展了 ChannelInboundHandlerAdapter ，
+     * 其在这个时间点上不会释放消息。
+     */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         ByteBuf in = (ByteBuf) msg;

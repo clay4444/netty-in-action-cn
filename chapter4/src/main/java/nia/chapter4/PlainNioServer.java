@@ -20,10 +20,11 @@ public class PlainNioServer {
     public void serve(int port) throws IOException {
         ServerSocketChannel serverChannel = ServerSocketChannel.open();
         serverChannel.configureBlocking(false);
-        ServerSocket ss = serverChannel.socket();
+        //ServerSocket ss = serverChannel.socket();
         InetSocketAddress address = new InetSocketAddress(port);
         //将服务器绑定到选定的端口
-        ss.bind(address);
+        //ss.bind(address);
+        serverChannel.bind(address);
         //打开Selector来处理 Channel
         Selector selector = Selector.open();
         //将ServerSocketChannel注册到Selector以接受连接
@@ -84,4 +85,3 @@ public class PlainNioServer {
         }
     }
 }
-
