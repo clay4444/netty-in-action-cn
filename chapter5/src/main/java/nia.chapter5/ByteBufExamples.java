@@ -197,6 +197,7 @@ public class ByteBufExamples {
 
     /**
      * 代码清单 5-10 对 ByteBuf 进行切片
+     * 重要的是这个切片和原来的ByteBuf是共享数据的；
      */
     public static void byteBufSlice() {
         Charset utf8 = Charset.forName("UTF-8");
@@ -214,6 +215,7 @@ public class ByteBufExamples {
 
     /**
      * 代码清单 5-11 复制一个 ByteBuf
+     * 复制出来的ByteBuf和原来的ByteBuf不是共享数据的；
      */
     public static void byteBufCopy() {
         Charset utf8 = Charset.forName("UTF-8");
