@@ -165,7 +165,7 @@ public class ByteBufExamples {
     /**
      * 代码清单 5-8 写数据
      * 任何名称以 write 开头的操作都将从当前的 writerIndex 处开始写数据，并将它增加已经写入的字节数
-     * 如果写操作的目标也是 ByteBuf ，并且没有指定源索引的值，则源缓冲区的 readerIndex 也同样会被增加相同的大小
+     * 如果写操作的目标也是 ByteBuf ，并且没有指定源索引的值，则源缓冲区的 writerIndex 也同样会被增加相同的大小
      */
     public static void write() {
         // Fills the writable bytes of a buffer with random integers.
