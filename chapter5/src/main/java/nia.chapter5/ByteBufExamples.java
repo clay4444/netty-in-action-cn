@@ -13,6 +13,9 @@ import java.util.Random;
 import static io.netty.channel.DummyChannelHandlerContext.DUMMY_INSTANCE;
 
 /**
+ * ByteBuf: Netty 的数据容器
+ * 维护了两个不同的索引，读索引和写索引
+ *
  * Created by kerr.
  *
  * 代码清单 5-1 支撑数组
@@ -53,7 +56,7 @@ public class ByteBufExamples {
     private static final Channel CHANNEL_FROM_SOMEWHERE = new NioSocketChannel();
     private static final ChannelHandlerContext CHANNEL_HANDLER_CONTEXT_FROM_SOMEWHERE = DUMMY_INSTANCE;
     /**
-     * 代码清单 5-1 支撑数组
+     * 代码清单 5-1 支撑数组：把数据存在堆空间中，非常适合于有遗留的数据需要处理的情况。
      */
     public static void heapBuffer() {
         ByteBuf heapBuf = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
@@ -89,7 +92,7 @@ public class ByteBufExamples {
     }
 
     /**
-     * 代码清单 5-3 使用 ByteBuffer 的复合缓冲区模式
+     * 代码清单 5-3 使用 java.nio.ByteBuffer 的复合缓冲区模式
      */
     public static void byteBufferComposite(ByteBuffer header, ByteBuffer body) {
         // Use an array to hold the message parts
@@ -143,28 +146,31 @@ public class ByteBufExamples {
     public static void byteBufRelativeAccess() {
         ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
         for (int i = 0; i < buffer.capacity(); i++) {
-            byte b = buffer.getByte(i);
+            byte b = buffer.getByte(i); //不会移动 readerindex 和 writeindex，如果需要可以使用readerIndex(index)来手动移动
             System.out.println((char) b);
         }
     }
 
     /**
      * 代码清单 5-7 读取所有数据
+     * 任何名称以 read 或者 skip 开头的操作都将检索或者跳过位于当前 readerIndex 的数据，并且将它增加已读字节数。
      */
     public static void readAllData() {
         ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
-        while (buffer.isReadable()) {
-            System.out.println(buffer.readByte());
+        while (buffer.isReadable()) { //读取所有可读的字节
+            System.out.println(buffer.readByte()); //readerIndex will add
         }
     }
 
     /**
      * 代码清单 5-8 写数据
+     * 任何名称以 write 开头的操作都将从当前的 writerIndex 处开始写数据，并将它增加已经写入的字节数
+     * 如果写操作的目标也是 ByteBuf ，并且没有指定源索引的值，则源缓冲区的 readerIndex 也同样会被增加相同的大小
      */
     public static void write() {
         // Fills the writable bytes of a buffer with random integers.
         ByteBuf buffer = BYTE_BUF_FROM_SOMEWHERE; //get reference form somewhere
-        while (buffer.writableBytes() >= 4) {
+        while (buffer.writableBytes() >= 4) {  //可写字节数
             buffer.writeInt(random.nextInt());
         }
     }

@@ -46,6 +46,7 @@ public class ChannelOperationExamples {
 
     /**
      * 代码清单 4-6 从多个线程使用同一个 Channel
+     * channel 是线程安全的；
      */
     public static void writingToChannelFromManyThreads() {
         final Channel channel = CHANNEL_FROM_SOMEWHERE; // Get the channel reference from somewhere
