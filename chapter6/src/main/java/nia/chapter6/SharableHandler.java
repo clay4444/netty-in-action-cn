@@ -9,7 +9,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-//使用注解@Sharable标注
+//使用注解 @Sharable 标注
 @Sharable
 public class SharableHandler extends ChannelInboundHandlerAdapter {
     @Override
@@ -19,4 +19,3 @@ public class SharableHandler extends ChannelInboundHandlerAdapter {
         ctx.fireChannelRead(msg);
     }
 }
-

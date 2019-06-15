@@ -29,7 +29,7 @@ public class ModifyChannelPipeline {
         //...
         //通过名称移除"handler3"
         pipeline.remove("handler3");
-        //通过引用移除FirstHandler（它是唯一的，所以不需要它的名称）
+        //通过引用移除 FirstHandler（它是唯一的，所以不需要它的名称）
         pipeline.remove(firstHandler);
         //将 SecondHandler("handler2")替换为 FourthHandler:"handler4"
         pipeline.replace("handler2", "handler4", new FourthHandler());
