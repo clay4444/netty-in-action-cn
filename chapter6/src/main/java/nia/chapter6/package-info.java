@@ -55,7 +55,7 @@
  * ChannelHandler
  * 因为一个 ChannelHandler 可以从属于多个 ChannelPipeline ，所以它也可以绑定到多个 ChannelHandlerContext 实例，
  * 但是此时这个ChannelHandler必须是线程安全的，而且要使用 @Sharable 注解；
- * 在多个 ChannelPipeline 中安装同一个ChannelHandler的一个常见原因就是 用于收集跨越多个 Channel 的统计信息；
+ * 在多个 ChannelPipeline 中安装同一个ChannelHandler的一个常见原因就是用于收集跨越多个 Channel 的统计信息；
  *
  *
  * ChannelPipline
