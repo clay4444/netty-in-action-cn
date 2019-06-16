@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-//扩展ByteToMessageDecoder类，以将字节解码为特定的格式
+//扩展 ByteToMessageDecoder 类，以将字节解码为特定的格式
 public class ToIntegerDecoder extends ByteToMessageDecoder {
     @Override
     public void decode(ChannelHandlerContext ctx, ByteBuf in,

@@ -20,5 +20,8 @@
  * 代码清单 9 CharToByteEncoder 类 {@link nia.chapter10.CharToByteEncoder}
  *
  * 代码清单 CombinedChannelDuplexHandler<I,O> {@link nia.chapter10.CombinedByteCharCodec}
+ *
+ * encode: 编码：OutBoundHandler：出站数据 -> 另一种格式
+ * decode: 解码: InBoundHandler: 入站数据 -> 另一种格式
  */
 package nia.chapter10;
