@@ -16,5 +16,10 @@
  * 代码清单 8-8 使用 Bootstrap 和 DatagramChannel {@link nia.chapter8.BootstrapDatagramChannel#bootstrap()}
  *
  * 代码清单 8-9 优雅关闭 {@link nia.chapter8.GracefulShutdown#bootstrap()}
+ *
+ * 笔记
+ * 引导一个应用程序是指对它进行配置，并使它运行起来的过程
+ *
+ *
  */
 package nia.chapter8;
