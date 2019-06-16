@@ -63,6 +63,7 @@ public class FixedLengthFrameDecoderTest {
         EmbeddedChannel channel = new EmbeddedChannel(
             new FixedLengthFrameDecoder(3));
         //返回 false，因为没有一个完整的可供读取的帧
+        //如果对 readInbound() 的后续调用将会返回数据，那么 writeInbound() 方法将会返回true。否则返回false
         assertFalse(channel.writeInbound(input.readBytes(2)));
         assertTrue(channel.writeInbound(input.readBytes(7)));
 

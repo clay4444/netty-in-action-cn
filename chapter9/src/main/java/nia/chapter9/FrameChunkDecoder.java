@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-//扩展 ByteToMessageDecoder以将入站字节解码为消息
+//扩展 ByteToMessageDecoder 以将入站字节解码为消息
 public class FrameChunkDecoder extends ByteToMessageDecoder {
     private final int maxFrameSize;
 
