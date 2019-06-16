@@ -21,6 +21,7 @@ public class IdleStateHandlerInitializer extends ChannelInitializer<Channel>
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.addLast(
                 //(1) IdleStateHandler 将在被触发时发送一个IdleStateEvent 事件
+                //空闲时间超过60s就触发一个 IdleStateEvent 事件
                 new IdleStateHandler(0, 0, 60, TimeUnit.SECONDS));
         //将一个 HeartbeatHandler 添加到ChannelPipeline中
         pipeline.addLast(new HeartbeatHandler());
